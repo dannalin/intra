@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-tw">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <!-- fullcalendar -->
+        <link href='fullcalendar/core/main.css' rel='stylesheet' />
+        <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+        <link href='fullcalendar/timeGrid/main.css' rel='stylesheet' />
+        <link href='fullcalendar/bootstrap/main.css' rel='stylesheet' />
+
+        <title>intranet</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"></a>
+        </div>
+    </nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+          <li class="breadcrumb-item active" aria-current="page">會議室預約</li>
+        </ol>
+    </nav>
+
+    <div class="container padding">
+        <div id='calendar'></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <!-- moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <!-- fullcalendar -->
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/core/locales-all.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/timeGrid/main.js'></script>
+    <script src='fullcalendar/interaction/main.js'></script>
+    <script src='fullcalendar/bootstrap/main.js'></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+  
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'bootstrap' ],
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+            locale: 'zh-tw',
+            themeSystem: 'bootstrap',
+            selectable: true,
+            selectOverlap: false,
+            allDaySlot: false,
+            defaultView: 'timeGridWeek',
+            // eventRender: function(info) {
+            //     var tooltip = new Tooltip(info.el, {
+            //     title: info.event.extendedProps.description,
+            //     placement: 'top',
+            //     trigger: 'hover',
+            //     container: 'body'
+            //     });
+            // },
+            eventRender: function (info) {
+                $(info.el).tooltip({ title: info.event.title });     
+            },
+            events: [
+                {
+                    title: '林依萍/7002',
+                    start: '2020-04-16T12:00:00',
+                    end: '2020-04-16T16:30:00'
+                },
+            ],
+            selectAllow: function(selectInfo) {
+                return moment().diff(selectInfo.start) <= 0
+            },
+            select: function(arg) {
+                // allow you to select
+                // View Object Properties type
+                if (arg.view.type=='timeGridWeek') {
+                    var title = prompt('預約人姓名/分機');
+                    if (title) { 
+                        calendar.addEvent({
+                            title: title,
+                            start: arg.start,
+                            end: arg.end,
+                            allDay: arg.allDay
+                        })
+                    }
+                } else {
+                    // do nothing
+                }
+                calendar.unselect()
+            },
+            
+          });
+          
+          calendar.render();
+        });
+
+        
+    </script>
+    </body>
+</html>

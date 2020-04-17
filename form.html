@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-tw">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>intra</title>
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+        <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"></a>
+            </div>
+        </nav>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+            <li class="breadcrumb-item active" aria-current="page">刷卡資料查詢</li>
+        </ol>
+        </nav>
+        <!-- search -->
+        <div class="container padding">
+            <div class="row">
+                <div class="col-sm-10 offset-sm-1 text-center">
+                        <form class="form-inline justify-content-center">
+                            <div class="form-group">
+                                <label class="sr-only">Name</label>
+                                <input type="text" class="form-control" placeholder="員工編號">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">查詢日期:</label>
+                                <input type="date" id="inputMDEx" class="form-control">
+                            </div>
+                            <div class="btn btn-outline-secondary">查詢</div> 
+                        </form>
+                </div>
+            </div>
+        </div>
+        <!-- table -->
+        <div class="container padding">
+            <table id="table"
+            class="table-sm table-striped">
+                <thead>
+                  <tr>
+                    <th data-field="id">#</th>
+                    <th data-field="cardDataDte">實際刷卡時間</th>
+                  </tr>
+                </thead>
+            </table>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+        <script>
+            var $table = $('#table')
+            $(function() {
+                var data = [
+                {
+                    'id': 0,
+                    'cardDataDte': '2020/01/02 08:45'
+                },
+                {
+                    'id': 1,
+                    'cardDataDte': '2020/01/02 18:04'
+                },
+                {
+                    'id': 2,
+                    'cardDataDte': '2020/01/03 08:51'
+                },
+                {
+                    'id': 3,
+                    'cardDataDte': '2020/01/03 18:16'
+                },
+                {
+                    'id': 4,
+                    'cardDataDte': '2020/01/06 08:55'
+                },
+                {
+                    'id': 5,
+                    'cardDataDte': '2020/01/06 18:03'
+                },
+                {
+                    'id': 6,
+                    'cardDataDte': '2020/01/02 08:45'
+                },
+                {
+                    'id': 7,
+                    'cardDataDte': '2020/01/02 18:04'
+                },
+                {
+                    'id': 8,
+                    'cardDataDte': '2020/01/03 08:51'
+                },
+                {
+                    'id': 9,
+                    'cardDataDte': '2020/01/03 18:16'
+                },
+                {
+                    'id': 10,
+                    'cardDataDte': '2020/01/06 08:55'
+                },
+                {
+                    'id': 11,
+                    'cardDataDte': '2020/01/06 18:03'
+                },
+                {
+                    'id': 12,
+                    'cardDataDte': '2020/01/02 08:45'
+                },
+                {
+                    'id': 13,
+                    'cardDataDte': '2020/01/02 18:04'
+                },
+                {
+                    'id': 14,
+                    'cardDataDte': '2020/01/03 08:51'
+                },
+                {
+                    'id': 15,
+                    'cardDataDte': '2020/01/03 18:16'
+                },
+                {
+                    'id': 16,
+                    'cardDataDte': '2020/01/06 08:55'
+                },
+                {
+                    'id': 17,
+                    'cardDataDte': '2020/01/06 18:03'
+                },
+                {
+                    'id': 18,
+                    'cardDataDte': '2020/01/02 08:45'
+                },
+                {
+                    'id': 19,
+                    'cardDataDte': '2020/01/02 18:04'
+                },
+                {
+                    'id': 20,
+                    'cardDataDte': '2020/01/03 08:51'
+                },
+                {
+                    'id': 21,
+                    'cardDataDte': '2020/01/03 18:16'
+                },
+                {
+                    'id': 22,
+                    'cardDataDte': '2020/01/06 08:55'
+                },
+                {
+                    'id': 23,
+                    'cardDataDte': '2020/01/06 18:03'
+                }
+                ]
+                $table.bootstrapTable({data: data})
+            })
+        </script>
+    </body>
+</html>
+</html>

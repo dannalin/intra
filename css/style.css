@@ -6,7 +6,9 @@ html, body {
     font-family: 'Poppins', sans-serif;
     color: #222;
 }
-
+.card-body:hover h3{
+    color: plum;
+  }
 /*---Media Queries --*/
 @media (max-width: 992px) {
 
@@ -17,11 +19,7 @@ html, body {
 @media (max-width: 576px) {
   
 }
-.footer {
-    background-color: #3f3f3f;
-    color: #d5d5d5;
-    padding-top: 2rem;
-}
+
 /*--- Bootstrap Padding Fix --*/
 [class*="col-"] {
     padding: 1rem;
